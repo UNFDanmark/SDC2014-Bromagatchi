@@ -42,7 +42,7 @@
                 android:layout_height="127dp"
                 android:id="@+id/BroImage"
                 android:src="@drawable/Phase2"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" android:layout_marginTop="40dp"/>
     </FrameLayout>
     <LinearLayout
             android:orientation="horizontal"
