@@ -51,14 +51,14 @@
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button" android:layout_gravity="center_vertical" android:layout_weight=".50"
+                android:text="Exercise"
+                android:id="@+id/exercisebutton" android:layout_gravity="center_vertical" android:layout_weight=".50"
                 android:clickable="true" android:height="90dip"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button2" android:layout_gravity="center_vertical" android:layout_weight=".50"
+                android:text="Rest"
+                android:id="@+id/restbutton" android:layout_gravity="center_vertical" android:layout_weight=".50"
                 android:clickable="true" android:height="90dip"/>
     </LinearLayout>
 </LinearLayout>

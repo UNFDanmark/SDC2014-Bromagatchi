@@ -1,25 +1,72 @@
 package com.example.Bromagatchi;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 
 public class MainActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
 
-    int hp = 100;
-    int xp = 0;
-    int energy = 50;
-    double happiness = 100;
+    public int hp = 100;
+    public int xp = 0;
+    public int energy = 50;
+    public double happiness = 100;
+    public AlarmManager alarmMgr;
+    public PendingIntent alarmIntent;
 
+
+    public void update() {
+        TextView hptext = (TextView) findViewById(R.id.HPstatTEXT);
+        hptext.setText(hp + "");
+    }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-    /*
-        Button exercise = (button) findViewById(R.id.)
-    */
+
+        Button exercise = (Button) findViewById(R.id.exercisebutton);
+        exercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                energy -= 10;
+                xp ++;
+                update();
+            }
+        });
+
+        Button rest = (Button) findViewById(R.id.restbutton);
+        rest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                energy++;
+                hp--;
+                update();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
     }
+    /*public void alarm() {
+
+        alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+    }*/
 }
