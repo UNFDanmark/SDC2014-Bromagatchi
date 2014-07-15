@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         TextView XPstat = (TextView) findViewById(R.id.XPstatTEXT);
         XPstat.setText("GAINZ: " + xp + "");
         TextView NRJstat = (TextView) findViewById(R.id.ENERGYstatTEXT);
-        NRJstat.setText("ENERGY: " +energy + "");
+        NRJstat.setText("ENERGY: " + energy + "");
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,14 @@ public class MainActivity extends Activity {
         exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                energy -= 10;
-                xp ++;
-                update();
+                if (energy >= 10) {
+                    energy -= 10;
+                    xp ++;
+                    update();
+                } else {
+                    System.out.println("i cant let you do that dave");
+                }
+
             }
         });
 
