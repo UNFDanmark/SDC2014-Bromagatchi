@@ -1,14 +1,15 @@
 package com.example.Bromagatchi;
 
 import android.app.Activity;
-import android.app.AlarmManager;
+/*import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
+import android.content.Intent;*/
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -19,9 +20,9 @@ public class MainActivity extends Activity {
     public int hp = 100;
     public int xp = 0;
     public int energy = 50;
-    public double happiness = 100;
+    /*public double happiness = 100;
     public AlarmManager alarmMgr;
-    public PendingIntent alarmIntent;
+    public PendingIntent alarmIntent;*/
 
 
     public void update() {
@@ -46,7 +47,7 @@ public class MainActivity extends Activity {
                     xp ++;
                     update();
                 } else {
-                    System.out.println("i cant let you do that dave");
+                    Toast.makeText(getApplicationContext(), "Not enough energy", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -56,8 +57,13 @@ public class MainActivity extends Activity {
         rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                energy+= 5;
-                update();
+                if (energy == 50) {
+                    Toast.makeText(getApplicationContext(), "Cant have more than 50 energy", Toast.LENGTH_SHORT).show();
+                } else {
+                    energy+= 5;
+                    update();
+                }
+
             }
         });
 
