@@ -34,11 +34,15 @@
             android:layout_width="fill_parent"
             android:layout_height="350dp" android:background="#ff6f7e7f">
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="486dp"
+                android:layout_height="579dp"
+                android:id="@+id/imageView" android:src="@drawable/Background1" android:layout_gravity="center"/>
+        <ImageView
+                android:layout_width="127dp"
+                android:layout_height="127dp"
                 android:id="@+id/BroImage"
-                android:src="@drawable/ic_launcher"
-                android:layout_gravity="center"/>
+                android:src="@drawable/Phase2"
+                android:layout_gravity="center_horizontal|bottom"/>
     </FrameLayout>
     <LinearLayout
             android:orientation="horizontal"
