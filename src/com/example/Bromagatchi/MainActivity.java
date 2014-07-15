@@ -8,8 +8,11 @@ import android.content.Intent;*/
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 
 public class MainActivity extends Activity {
@@ -24,6 +27,7 @@ public class MainActivity extends Activity {
     public AlarmManager alarmMgr;
     public PendingIntent alarmIntent;*/
 
+    private ImageView broImage;
 
     public void update() {
         TextView hptext = (TextView) findViewById(R.id.HPstatTEXT);
@@ -32,17 +36,41 @@ public class MainActivity extends Activity {
         XPstat.setText("GAINZ: " + xp + "");
         TextView NRJstat = (TextView) findViewById(R.id.ENERGYstatTEXT);
         NRJstat.setText("ENERGY: " + energy + "");
+        if (xp > 30) {
+            setImage(R.drawable.phase2);
+        }
+        if (xp > 100) {
+            setImage(R.drawable.phase3);
+        }
+
     }
+
+    public void setImage(int image) {
+        broImage.setImageResource(image);
+    }
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // Find views
+        broImage = (ImageView)findViewById(R.id.BroImage);
 
         Button exercise = (Button) findViewById(R.id.exercisebutton);
         exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (energy >= 10) {
+                    Random rnd = new Random();
+                    int randno = rnd.nextInt(5);
+
+
+                    //Injury
+                    if (randno == 4) {
+                        hp -= 10;
+                        Toast.makeText(getApplicationContext(), "Injury", Toast.LENGTH_SHORT).show();
+                    }
                     energy -= 10;
                     xp ++;
                     update();
@@ -66,6 +94,7 @@ public class MainActivity extends Activity {
 
             }
         });
+
 
 
 
