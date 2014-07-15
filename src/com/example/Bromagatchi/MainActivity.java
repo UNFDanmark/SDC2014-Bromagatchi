@@ -5,13 +5,17 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;*/
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
 import java.util.Random;
 
 
@@ -26,8 +30,11 @@ public class MainActivity extends Activity {
     /*public double happiness = 100;
     public AlarmManager alarmMgr;
     public PendingIntent alarmIntent;*/
+    public Date date;
 
     private ImageView broImage;
+
+    private SharedPreferences prefs;
 
     public void update() {
         TextView hptext = (TextView) findViewById(R.id.HPstatTEXT);
@@ -50,9 +57,37 @@ public class MainActivity extends Activity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Indlæs tiden appen blev paused
+        long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
+        long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
+        System.out.println(diffrence);
+        if (diffrence/1000 > 2) {
+            hp -= diffrence/10000;
+        }
+        update();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Gem nuværende tid
+        SharedPreferences.Editor editor = prefs.edit();
+        //editor.putLong("lastTime", System.currentTimeMillis());
+        editor.putLong("lastTime", System.currentTimeMillis());
+        editor.commit();
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        date = new Date();
+        // Find sharedPreferences
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         // Find views
         broImage = (ImageView)findViewById(R.id.BroImage);
@@ -63,9 +98,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (energy >= 10) {
                     Random rnd = new Random();
-                    int randno = rnd.nextInt(5);
-
-
+                    int randno = rnd.nextInt(10);
                     //Injury
                     if (randno == 4) {
                         hp -= 10;
