@@ -26,7 +26,11 @@ public class MainActivity extends Activity {
 
     public void update() {
         TextView hptext = (TextView) findViewById(R.id.HPstatTEXT);
-        hptext.setText(hp + "");
+        hptext.setText("HP: " + hp + "");
+        TextView XPstat = (TextView) findViewById(R.id.XPstatTEXT);
+        XPstat.setText("GAINZ: " + xp + "");
+        TextView NRJstat = (TextView) findViewById(R.id.ENERGYstatTEXT);
+        NRJstat.setText("ENERGY: " +energy + "");
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,7 @@ public class MainActivity extends Activity {
         rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                energy++;
-                hp--;
+                energy+= 5;
                 update();
             }
         });

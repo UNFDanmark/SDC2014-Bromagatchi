@@ -13,21 +13,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="HP: "
+                android:text="HP: 100"
                 android:id="@+id/HPstatTEXT" android:gravity="left" android:layout_gravity="left"
-                android:layout_weight="0.20"/>
+                android:layout_weight="0.20" android:singleLine="false"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Gainz: "
+                android:text="GAINZ: 0 "
                 android:id="@+id/XPstatTEXT"
                 android:layout_weight=".20"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Energy: "
+                android:text="ENERGY: 50"
                 android:id="@+id/ENERGYstatTEXT" android:layout_weight=".20"/>
     </LinearLayout>
     <FrameLayout
