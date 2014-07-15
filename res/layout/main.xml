@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#FF6F7E7F">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:paddingBottom="30dip" android:background="#ff5e6d6e"
+            android:paddingTop="10dip" android:paddingLeft="10dip">
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="HP: "
+                android:id="@+id/HPstatTEXT" android:gravity="left" android:layout_gravity="left"
+                android:layout_weight="0.20"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Gainz: "
+                android:id="@+id/XPstatTEXT"
+                android:layout_weight=".20"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Energy: "
+                android:id="@+id/ENERGYstatTEXT" android:layout_weight=".20"/>
+    </LinearLayout>
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="350dp" android:background="#ff6f7e7f">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/BroImage"
+                android:src="@drawable/ic_launcher"
+                android:layout_gravity="center"/>
+    </FrameLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button" android:layout_gravity="center_vertical" android:layout_weight=".50"
+                android:clickable="true" android:height="90dip"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button2" android:layout_gravity="center_vertical" android:layout_weight=".50"
+                android:clickable="true" android:height="90dip"/>
+    </LinearLayout>
+</LinearLayout>
+
