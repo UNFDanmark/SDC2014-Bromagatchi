@@ -14,12 +14,12 @@ public class MainActivity extends Activity {
     int energy = 50;
     double happiness = 100;
 
-    @Override
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+    /*
         Button exercise = (button) findViewById(R.id.)
-
+    */
     }
 }
