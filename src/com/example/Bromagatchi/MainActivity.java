@@ -65,7 +65,9 @@ public class MainActivity extends Activity {
         long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
         long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
         System.out.println(diffrence);
-        if (diffrence/1000 > 2) {
+        if (diffrence/1000 > 2)
+        {
+
             energy += diffrence/10000; //OVERVEJE, OM DET ER RIMELIGT.
         }
         update();
