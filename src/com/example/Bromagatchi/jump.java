@@ -3,23 +3,21 @@ package com.example.Bromagatchi;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import java.util.Date;
 
 /**
  * Created by sdc on 7/16/14.
  */
 public class jump extends Activity {
-
-    public int hp = 100;
-    public int xp = 0;
-    public int energy = 50;
-    public double hap = 1;
-
+    SharedPreferences preferences;
     private SharedPreferences prefs;
     private ImageView broImage;
 
@@ -37,6 +35,7 @@ public class jump extends Activity {
                 animationu.setDuration(1000);
                 animationu.setFillAfter(true);
                 broImage.startAnimation(animationu);
+
 
 
                 animationu.setAnimationListener(new Animation.AnimationListener() {
@@ -95,10 +94,3 @@ public class jump extends Activity {
 }
 
 
-
-   /*) public void setYBROd() {
-        Animation animationd = new TranslateAnimation(0, 0, -400, 0);
-        animationd.setDuration(1000);
-        animationd.setFillAfter(true);
-        broImage.startAnimation(animationd);
-    }*/

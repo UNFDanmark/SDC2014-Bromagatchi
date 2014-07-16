@@ -118,7 +118,6 @@ public class MainActivity extends Activity {
 
         // Gem nuværende tid
         SharedPreferences.Editor editor = prefs.edit();
-        //editor.putLong("lastTime", System.currentTimeMillis());
         editor.putLong("lastTime", System.currentTimeMillis());
         // Gem nuværende XP:
         editor.putInt("XP on pause", xp);
@@ -155,7 +154,6 @@ public class MainActivity extends Activity {
                         if (hap > 0.1) {
                             hap -= 0.1;
                         }
-
                         energy -= 10 * (hap+0.1);
                         Toast.makeText(getApplicationContext(), "Injury", Toast.LENGTH_SHORT).show();
                         System.out.println(hap);
@@ -167,7 +165,10 @@ public class MainActivity extends Activity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Not enough energy", Toast.LENGTH_SHORT).show();
                 }
-
+                //SAVE STATS FOR JUMPING ACTIVITY 16 July 2014 10:46
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt("xp_act", xp);
+                editor.commit();
             }
         });
 
