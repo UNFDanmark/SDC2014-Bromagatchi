@@ -67,7 +67,12 @@ public class MainActivity extends Activity {
             setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
         }
-
+        if (energy >= 50) {
+            energy = 50;
+        }
+        if (energy <= 0) {
+            energy = 0;
+        }
     }
 
     public void setImageBRO(int image) {
@@ -175,15 +180,22 @@ public class MainActivity extends Activity {
                     Toast.makeText(getApplicationContext(), "Cant have more than 50 energy", Toast.LENGTH_SHORT).show();
                 } else {
                     energy+= 5 ;
-                    update();
+
                     if (hap >= 1.9) {
                         hap = 2.0;
                         System.out.println(hap);
                     }
+
+                    if (hap <= 0) {
+                        hap = 0.1;
+                        System.out.println(hap);
+                    }
+
                     if (hap < 1.9) {
                         hap += 0.1;
                         System.out.println(hap);
                     }
+                    update();
                 }
 
             }
