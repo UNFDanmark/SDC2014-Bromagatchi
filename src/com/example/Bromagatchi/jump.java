@@ -3,11 +3,8 @@ package com.example.Bromagatchi;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -96,29 +93,29 @@ public class jump extends Activity {
             public void update() {
 
                 if (xp < 5) {
-                    setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+                    setImageBro(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
                     //Background skifte
                 }
                 if (xp > 4) {
-                    setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+                    setImageBro(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
                     //Background skifte
                 }
                 if (xp > 30) {
-                    setImageBRO(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+                    setImageBro(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
                     //Background skifte
                 }
                 if (xp > 50) {
-                    setImageBRO(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+                    setImageBro(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
                     //Background skifte
                 }
                 if (xp > 100) {
-                    setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+                    setImageBro(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
                     //Background skifte
                 }
 
             }
 
-            public void setImageBRO(int image) {
+            public void setImageBro(int image) {
                 broImage.setImageResource(image); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             }
         });
