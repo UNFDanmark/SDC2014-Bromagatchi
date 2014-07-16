@@ -10,11 +10,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.util.Date;
 import java.util.Random;
@@ -42,11 +40,15 @@ public class MainActivity extends Activity {
 
     public void update() {
         TextView hptext = (TextView) findViewById(R.id.HPstatTEXT);
-        hptext.setText("HP: " + hp + "");
+        hptext.setText("HP"); //HP fjernet
         TextView XPstat = (TextView) findViewById(R.id.XPstatTEXT);
-        XPstat.setText("GAINZ: " + xp + "");
+        XPstat.setText("GAINZ"); //XP fjernet
         TextView NRJstat = (TextView) findViewById(R.id.ENERGYstatTEXT);
-        NRJstat.setText("ENERGY: " + energy + "");
+        NRJstat.setText("ENERGY"); //Energy fjernet
+        ProgressBar HPBar = (ProgressBar) findViewById(R.id.HPBar);
+        HPBar.setProgress(hp);
+        ProgressBar ENERGYBar = (ProgressBar) findViewById(R.id.ENERGYBar);
+        ENERGYBar.setProgress((int) ((float) energy/50*100));
         if (xp < 5) {
             setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
@@ -202,7 +204,18 @@ public class MainActivity extends Activity {
             }
         });
 
-
+        //Reset Button
+        Button bReset = (Button) findViewById(R.id.bRESET);
+        bReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hp = 100;
+                xp = 0;
+                energy = 50;
+                hap = 1;
+                update();
+            }
+        });
 
 
 

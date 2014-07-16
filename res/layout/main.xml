@@ -7,28 +7,55 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:paddingBottom="30dip" android:background="#ff5e6d6e"
+            android:layout_height="wrap_content" android:paddingBottom="10dip" android:background="#ff5e6d6e"
             android:paddingTop="10dip" android:paddingLeft="10dip">
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="HP: 100"
-                android:id="@+id/HPstatTEXT" android:gravity="left" android:layout_gravity="left"
-                android:layout_weight="0.20" android:singleLine="false"/>
+                android:text="HP"
+                android:id="@+id/HPstatTEXT" android:gravity="center"
+                android:layout_weight="0.33" android:singleLine="false" android:layout_marginLeft="-10dp"/>
+
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="GAINZ: 0 "
+                android:text="GAINZ"
                 android:id="@+id/XPstatTEXT"
-                android:layout_weight=".20"/>
+                android:layout_weight=".33" android:layout_gravity="center" android:gravity="center"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="ENERGY: 50"
-                android:id="@+id/ENERGYstatTEXT" android:layout_weight=".20"/>
+                android:text="ENERGY"
+                android:id="@+id/ENERGYstatTEXT" android:layout_weight=".33" android:layout_gravity="center"
+                android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/HPBar" android:layout_gravity="right" android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:progress="100" android:layout_weight=".33"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/XPBar" android:layout_gravity="center_horizontal"
+                android:layout_marginRight="5dip"
+                android:progress="100" android:layout_weight=".33"/> <!--Kunne være smart med XP til next level-->
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ENERGYBar" android:layout_marginRight="5dip"
+                android:progress="100" android:layout_weight=".33"/>
     </LinearLayout>
     <FrameLayout
             android:layout_width="fill_parent"
@@ -44,6 +71,17 @@
                 android:src="@drawable/phase1"
                 android:layout_gravity="center" android:layout_marginTop="40dp"/>
     </FrameLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="0dip"
+                android:layout_height="40dip"
+                android:text="Reset"
+                android:id="@+id/bRESET" android:height="10dip" android:width="10dip" android:layout_gravity="bottom"
+                android:layout_weight=".25"/>
+    </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"

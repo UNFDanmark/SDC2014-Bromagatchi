@@ -31,14 +31,14 @@ public class jump extends Activity {
         Log.d("XP: ", xp+"");
         // Find views
         broImage = (ImageView)findViewById(R.id.BroImage);
-        update(); // BREAKS THE APP
+        update();
     }
 
     public void update() {
 
         if (xp < 5) {
             setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
-            //Background skifte
+            //Background skifte. Her kommer metoden
         }
         if (xp > 4) {
             setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
