@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
             setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
         }
-        if (xp > 5) {
+        if (xp > 4){
             setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
         }
@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
         exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity( jumpIntent);
+                startActivity( jumpIntent);
 
 
                 if (energy >= 10) {

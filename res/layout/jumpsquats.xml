@@ -7,6 +7,11 @@
     <FrameLayout
             android:layout_width="fill_parent"
             android:layout_height="426dp" android:background="@drawable/jump_room">
+        <ImageView
+                android:layout_width="138dp"
+                android:layout_height="138dp"
+                android:id="@+id/BroImage" android:src="@drawable/phase0"
+                android:layout_gravity="center_horizontal|bottom"/>
     </FrameLayout>
     <Button
             android:layout_width="match_parent"
