@@ -2,7 +2,9 @@ package com.example.Bromagatchi;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -30,42 +32,22 @@ public class jump extends Activity {
         setContentView(R.layout.jumpsquats);
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         xp = preferences.getInt("xp_act", 1);
-        Log.d("XP: ", xp+"");
+        Log.d("XP: ", xp + "");
         // Find views
-        broImage = (ImageView)findViewById(R.id.BroImage);
+        ImageView broImage = (ImageView)findViewById(R.id.BroImage); //ImageView
         update();
     }
-        broImage = (ImageView) findViewById(R.id.BroImage);
-        final Button jumpButton = (Button) findViewById(R.id.jumpButton);
+        ImageView broImage = (ImageView) findViewById(R.id.BroImage); //ImageView
+        Button jumpButton = (Button) findViewById(R.id.jumpButton);
         jumpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+        @Override
+        public void onClick(View v)
             public void onClick(View v) {
                 Animation animationu = new TranslateAnimation(0, 0, 0, -400);
                 animationu.setDuration(1000);
                 animationu.setFillAfter(true);
                 broImage.startAnimation(animationu);
 
-   
-
-        if (xp < 5) {
-            setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
-            //Background skifte
-        }
-        if (xp > 4) {
-            setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
-            //Background skifte
-        }
-        if (xp > 30) {
-            setImageBRO(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
-            //Background skifte
-        }
-        if (xp > 50) {
-            setImageBRO(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
-            //Background skifte
-        }
-        if (xp > 100) {
-            setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
-            //Background skifte
 
                 animationu.setAnimationListener(new Animation.AnimationListener() {
                     @Override
