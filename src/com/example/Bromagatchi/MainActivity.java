@@ -27,9 +27,9 @@ public class MainActivity extends Activity {
     public int hp = 100;
     public int xp = 0;
     public int energy = 99999;
-    /*public double happiness = 100;
-    public AlarmManager alarmMgr;
-    public PendingIntent alarmIntent;*/
+    public double hap = 1;
+    //public AlarmManager alarmMgr;
+    //public PendingIntent alarmIntent;*/
     public Date date;
 
     private ImageView broImage;
@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
     private Button exercisebutton;
 
     private SharedPreferences prefs;
+
 
     public void update() {
         TextView hptext = (TextView) findViewById(R.id.HPstatTEXT);
@@ -124,14 +125,23 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (energy >= 10) {
                     Random rnd = new Random();
-                    int randno = rnd.nextInt(10);
+                    int randno = rnd.nextInt(10); //ÆNDRE FREKVENSEN AF INJURY
                     //Injury
                     if (randno == 4) {
-                        hp -= 10;
+                        if (hap <= 0.5) {
+                            hap = 0;
+                        }
+                        if (hap > 0.5) {
+                            hap -= 0.5;
+                        }
+
+                        energy -= 10 * hap;
                         Toast.makeText(getApplicationContext(), "Injury", Toast.LENGTH_SHORT).show();
+                        System.out.println(hap);
+                        System.out.println(energy);
                     }
                     energy -= 10;
-                    xp ++;
+                    xp += 1*hap;
                     update();
                 } else {
                     Toast.makeText(getApplicationContext(), "Not enough energy", Toast.LENGTH_SHORT).show();
@@ -146,9 +156,18 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (energy == 50) {
                     Toast.makeText(getApplicationContext(), "Cant have more than 50 energy", Toast.LENGTH_SHORT).show();
+
                 } else {
-                    energy+= 5;
+                    energy+= 5 ;
                     update();
+                    if (hap >= 1.5) {
+                        hap = 2.0;
+                        System.out.println(hap);
+                    }
+                    if (hap < 1.5) {
+                        hap += 0.5;
+                        System.out.println(hap);
+                    }
                 }
 
             }
