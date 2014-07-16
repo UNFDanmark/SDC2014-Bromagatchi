@@ -3,24 +3,35 @@ package com.example.Bromagatchi;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.ImageView;
+import java.util.Date;
 
 /**
  * Created by sdc on 7/16/14.
  */
 public class jump extends Activity {
-
-    public int hp = 100;
-    public int xp = 0;
-    public int energy = 50;
-    public double hap = 1;
-
+    SharedPreferences preferences;
     private SharedPreferences prefs;
+    //public int hp = 100;
+    public int xp;
+    //public int energy = 50;
+    //public double hap = 1;
+    private ImageView broImage;
+    private ImageView imageView;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jumpsquats);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        xp = preferences.getInt("xp_act", 1);
+        Log.d("XP: ", xp+"");
+        // Find views
+        broImage = (ImageView)findViewById(R.id.BroImage);
+        update(); // BREAKS THE APP
     }
 
     public void update() {
@@ -44,12 +55,12 @@ public class jump extends Activity {
         if (xp > 100) {
             setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+
         }
 
     }
 
 
-    private ImageView broImage;
     public void setImageBRO(int image) {
         broImage.setImageResource(image); //Ændre til BRO, så vi har en metode til at ændre baggrunden
     }
@@ -59,7 +70,6 @@ public class jump extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
         // Indlæs tiden appen blev paused
         //long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
         //long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
