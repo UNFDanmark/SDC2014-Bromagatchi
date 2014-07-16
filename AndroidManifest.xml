@@ -17,5 +17,6 @@
         <activity android:name=".jump"
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.Holo.NoActionBar"/>
+        <activity android:name=".rest"/>
     </application>
 </manifest>

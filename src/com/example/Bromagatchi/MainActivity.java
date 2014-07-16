@@ -144,6 +144,7 @@ public class MainActivity extends Activity {
         broImage = (ImageView)findViewById(R.id.BroImage);
 
         final Intent jumpIntent = new Intent(MainActivity.this , jump.class);
+        final Intent restIntent = new Intent(MainActivity.this , rest.class);
 
         Button exercise = (Button) findViewById(R.id.exercisebutton);
         exercise.setOnClickListener(new View.OnClickListener() {
@@ -163,8 +164,11 @@ public class MainActivity extends Activity {
 
         Button rest = (Button) findViewById(R.id.restbutton);
         rest.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+                startActivity(restIntent);
                 if (energy >= 50) {
                     energy = 50;
                     Toast.makeText(getApplicationContext(), "You have reached max energy!", Toast.LENGTH_SHORT).show();

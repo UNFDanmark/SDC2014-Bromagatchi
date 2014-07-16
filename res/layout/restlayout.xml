@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_height="426dp" android:background="@drawable/jump_room">
+            android:layout_height="426dp" android:background="@drawable/hospital_background">
         <ImageView
                 android:layout_width="138dp"
                 android:layout_height="138dp"
@@ -16,6 +15,6 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Jump Squat!"
-            android:id="@+id/jumpButton"/>
+            android:text="Rest"
+            android:id="@+id/restButton"/>
 </LinearLayout>
