@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;*/
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -119,10 +120,15 @@ public class MainActivity extends Activity {
         // Find views
         broImage = (ImageView)findViewById(R.id.BroImage);
 
+        final Intent jumpIntent = new Intent(MainActivity.this , jump.class);
+
         Button exercise = (Button) findViewById(R.id.exercisebutton);
         exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //startActivity( jumpIntent);
+
+
                 if (energy >= 10) {
                     Random rnd = new Random();
                     int randno = rnd.nextInt(10); //ÆNDRE FREKVENSEN AF INJURY
