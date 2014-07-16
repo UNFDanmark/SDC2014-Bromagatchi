@@ -11,13 +11,17 @@ import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import java.util.Date;
 
 /**
  * Created by sdc on 7/16/14.
  */
 public class jump extends Activity {
-    SharedPreferences preferences;
+
+    public int hp = 100;
+    public int xp = 0;
+    public int energy = 50;
+    public double hap = 1;
+
     private SharedPreferences prefs;
     private ImageView broImage;
 
