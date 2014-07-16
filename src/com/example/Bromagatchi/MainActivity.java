@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
     public int hp = 100;
     public int xp = 0;
     public int energy = 50;
-    public double hap = 1;
+    public float hap = 1;
     //public AlarmManager alarmMgr;
     //public PendingIntent alarmIntent;*/
     public Date date;
@@ -49,25 +49,31 @@ public class MainActivity extends Activity {
         HPBar.setProgress(hp);
         ProgressBar ENERGYBar = (ProgressBar) findViewById(R.id.ENERGYBar);
         ENERGYBar.setProgress((int) ((float) energy/50*100));
-        if (xp < 5) {
+        ProgressBar XPBar = (ProgressBar) findViewById(R.id.XPBar);
+        if (xp <= 5) {
             setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+            XPBar.setProgress((int) ((float) xp/5*100));
         }
-        if (xp > 4){
+        if (xp >= 5){
             setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+            XPBar.setProgress((int) ((float) (xp-5)/25*100));
         }
         if (xp > 30) {
             setImageBRO(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+            XPBar.setProgress((int) ((float) (xp-30)/20*100));
         }
         if (xp > 50) {
             setImageBRO(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+            XPBar.setProgress((int) ((float) (xp-50)/50*100));
         }
         if (xp > 100) {
             setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+            XPBar.setProgress((int) ((float) 100));
         }
         if (energy >= 50) {
             energy = 50;
@@ -103,11 +109,12 @@ public class MainActivity extends Activity {
             hp += diffrence/10000;
             energy += diffrence/10000; //10000 er blot en faktor
         }
-        xp = prefs.getInt("XP on pause", xp);
-        if (energy >= 50) {
+        xp = prefs.getInt("XP", xp);
+        energy = prefs.getInt("Energy", energy);
+        if (energy > 50) {
             energy = 50;
         }
-        if (hp >= 100) {
+        if (hp > 100) {
             hp = 100;
         }
         update();
@@ -122,7 +129,7 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putLong("lastTime", System.currentTimeMillis());
         // Gem nuværende XP:
-        editor.putInt("XP on pause", xp);
+        editor.putInt("XP", xp);
         editor.commit();
     }
 
@@ -145,31 +152,11 @@ public class MainActivity extends Activity {
                 startActivity( jumpIntent);
 
 
-                if (energy >= 10) {
-                    Random rnd = new Random();
-                    int randno = rnd.nextInt(10); //ÆNDRE FREKVENSEN AF INJURY
-                    //Injury
-                    if (randno == 4) {
-                        if (hap <= 0.1) {
-                            hap = 0;
-                        }
-                        if (hap > 0.1) {
-                            hap -= 0.1;
-                        }
-                        energy -= 10 * (hap+0.1);
-                        Toast.makeText(getApplicationContext(), "Injury", Toast.LENGTH_SHORT).show();
-                        System.out.println(hap);
-                        System.out.println(energy);
-                    }
-                    energy -= 10;
-                    xp += 1*hap;
-                    update();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Not enough energy", Toast.LENGTH_SHORT).show();
-                }
                 //SAVE STATS FOR JUMPING ACTIVITY 16 July 2014 10:46
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("xp_act", xp);
+                editor.putInt("XP", xp);
+                editor.putInt("Energy", energy);
+                editor.putFloat("HAP", hp);
                 editor.commit();
             }
         });
@@ -185,17 +172,17 @@ public class MainActivity extends Activity {
                     energy+= 5 ;
 
                     if (hap >= 1.9) {
-                        hap = 2.0;
+                        hap = (float) 2.0;
                         System.out.println(hap);
                     }
 
                     if (hap <= 0) {
-                        hap = 0.1;
+                        hap = (float) 0.1;
                         System.out.println(hap);
                     }
 
                     if (hap < 1.9) {
-                        hap += 0.1;
+                        hap += (float) 0.1;
                         System.out.println(hap);
                     }
                     update();
@@ -216,14 +203,5 @@ public class MainActivity extends Activity {
                 update();
             }
         });
-
-
-
-
-
-
-
-
-
     }
 }
