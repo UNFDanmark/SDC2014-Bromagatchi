@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 
     public int hp = 100;
     public int xp = 0;
-    public int energy = 99999;
+    public int energy = 50;
     public double hap = 1;
     //public AlarmManager alarmMgr;
     //public PendingIntent alarmIntent;*/
@@ -91,12 +91,20 @@ public class MainActivity extends Activity {
         long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
         long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
         System.out.println(diffrence);
-        if (diffrence/1000 > 2)
+        if (diffrence/1000 > 60) //HVERT MINUT
         {
-
-            energy += diffrence/10000; //OVERVEJE, OM DET ER RIMELIGT.
+            hp += diffrence/10000;
+            energy += diffrence/10000; //10000 er blot en faktor
+        }
+        xp = prefs.getInt("XP on pause", xp);
+        if (energy >= 50) {
+            energy = 50;
+        }
+        if (hp >= 100) {
+            hp = 100;
         }
         update();
+
     }
 
     @Override
@@ -107,6 +115,8 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor editor = prefs.edit();
         //editor.putLong("lastTime", System.currentTimeMillis());
         editor.putLong("lastTime", System.currentTimeMillis());
+        // Gem nuværende XP:
+        editor.putInt("XP on pause", xp);
         editor.commit();
     }
 
@@ -134,14 +144,14 @@ public class MainActivity extends Activity {
                     int randno = rnd.nextInt(10); //ÆNDRE FREKVENSEN AF INJURY
                     //Injury
                     if (randno == 4) {
-                        if (hap <= 0.5) {
+                        if (hap <= 0.1) {
                             hap = 0;
                         }
-                        if (hap > 0.5) {
-                            hap -= 0.5;
+                        if (hap > 0.1) {
+                            hap -= 0.1;
                         }
 
-                        energy -= 10 * hap;
+                        energy -= 10 * (hap+0.1);
                         Toast.makeText(getApplicationContext(), "Injury", Toast.LENGTH_SHORT).show();
                         System.out.println(hap);
                         System.out.println(energy);
@@ -160,18 +170,18 @@ public class MainActivity extends Activity {
         rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (energy == 50) {
+                if (energy >= 50) {
+                    energy = 50;
                     Toast.makeText(getApplicationContext(), "Cant have more than 50 energy", Toast.LENGTH_SHORT).show();
-
                 } else {
                     energy+= 5 ;
                     update();
-                    if (hap >= 1.5) {
+                    if (hap >= 1.9) {
                         hap = 2.0;
                         System.out.println(hap);
                     }
-                    if (hap < 1.5) {
-                        hap += 0.5;
+                    if (hap < 1.9) {
+                        hap += 0.1;
                         System.out.println(hap);
                     }
                 }
