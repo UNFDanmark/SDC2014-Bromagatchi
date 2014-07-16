@@ -26,13 +26,15 @@ public class MainActivity extends Activity {
 
     public int hp = 100;
     public int xp = 0;
-    public int energy = 50;
+    public int energy = 99999;
     /*public double happiness = 100;
     public AlarmManager alarmMgr;
     public PendingIntent alarmIntent;*/
     public Date date;
 
     private ImageView broImage;
+    private ImageView imageView;
+    private Button exercisebutton;
 
     private SharedPreferences prefs;
 
@@ -43,18 +45,40 @@ public class MainActivity extends Activity {
         XPstat.setText("GAINZ: " + xp + "");
         TextView NRJstat = (TextView) findViewById(R.id.ENERGYstatTEXT);
         NRJstat.setText("ENERGY: " + energy + "");
+        if (xp < 5) {
+            setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+            //Background skifte
+        }
+        if (xp > 5) {
+            setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+            //Background skifte
+        }
         if (xp > 30) {
-            setImage(R.drawable.phase2);
+            setImageBRO(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+            //Background skifte
+        }
+        if (xp > 50) {
+            setImageBRO(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+            //Background skifte
         }
         if (xp > 100) {
-            setImage(R.drawable.phase3);
+            setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+            //Background skifte
         }
 
     }
 
-    public void setImage(int image) {
-        broImage.setImageResource(image);
+    public void setImageBRO(int image) {
+        broImage.setImageResource(image); //Ændre til BRO, så vi har en metode til at ændre baggrunden
     }
+
+    public void setImageBACKGROUND(int image) {
+        imageView.setImageResource(image); //Metoden til at ændre baggrunden
+    }
+
+
+
+
 
 
     @Override
@@ -141,10 +165,4 @@ public class MainActivity extends Activity {
 
 
     }
-    /*public void alarm() {
-
-        alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-    }*/
 }
