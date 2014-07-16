@@ -2,46 +2,35 @@ package com.example.Bromagatchi;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import java.util.Date;
 
 /**
  * Created by sdc on 7/16/14.
  */
 public class jump extends Activity {
-    SharedPreferences preferences;
+
+    public int hp = 100;
+    public int xp = 0;
+    public int energy = 50;
+    public double hap = 1;
+
     private SharedPreferences prefs;
-    //public int hp = 100;
-    public int xp;
-    //public int energy = 50;
-    //public double hap = 1;
     private ImageView broImage;
-    private ImageView imageView;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jumpsquats);
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        xp = preferences.getInt("xp_act", 1);
-        Log.d("XP: ", xp + "");
-        // Find views
-        ImageView broImage = (ImageView)findViewById(R.id.BroImage); //ImageView
-        update();
-    }
-        ImageView broImage = (ImageView) findViewById(R.id.BroImage); //ImageView
-        Button jumpButton = (Button) findViewById(R.id.jumpButton);
+        broImage = (ImageView) findViewById(R.id.BroImage);
+        final Button jumpButton = (Button) findViewById(R.id.jumpButton);
         jumpButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v)
+            @Override
             public void onClick(View v) {
                 Animation animationu = new TranslateAnimation(0, 0, 0, -400);
                 animationu.setDuration(1000);
@@ -49,7 +38,8 @@ public class jump extends Activity {
                 broImage.startAnimation(animationu);
 
 
-                animationu.setAnimationListener(new Animation.AnimationListener() {
+
+                animationu.setAnimationListener (new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
                         jumpButton.setEnabled(false);
