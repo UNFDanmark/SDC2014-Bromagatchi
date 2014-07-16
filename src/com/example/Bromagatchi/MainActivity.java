@@ -167,7 +167,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (energy >= 50) {
                     energy = 50;
-                    Toast.makeText(getApplicationContext(), "Cant have more than 50 energy", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "You have reached max energy!", Toast.LENGTH_SHORT).show();
                 } else {
                     energy+= 5 ;
 
