@@ -28,12 +28,11 @@ public class jump extends Activity implements SensorEventListener {
     private boolean mInitialized;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
-    private final float NOISE = 4.0f; //Changed 11:19 torsdag
+    private final float NOISE = 7.0f; //Changed 11:19 torsdag
     public int hp = 100;
     public int xp = 0;
     public int energy = 50;
     public float hap = 1;
-    private int jump_count;
     private boolean hasJumped;
     private SharedPreferences prefs;
     private ImageView broImage;
@@ -53,7 +52,6 @@ public class jump extends Activity implements SensorEventListener {
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        jump_count = 0;
         hasJumped = false;
 
         update();
@@ -177,12 +175,11 @@ public class jump extends Activity implements SensorEventListener {
         float x = event.values[0];
         float y = event.values[1];
         float z = event.values[2];
+        hasJumped = false;
+        Log.d("Has Jumped", hasJumped + "");
         Log.d("Y", y + "");
             if (y > NOISE && !hasJumped) {
-                jump_count++;
-                hasJumped = true;
                 Log.d("Y", y + "");
-                Log.d("Has Jumped", hasJumped + "");
                 if (energy > 0) {
                     Animation animationu = new TranslateAnimation(0, 0, 0, -400);
                     animationu.setDuration(500);
