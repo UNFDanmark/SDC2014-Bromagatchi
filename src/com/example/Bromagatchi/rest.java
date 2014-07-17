@@ -91,7 +91,5 @@ public class rest extends Activity {
     public void setImageBro(int image) {
         broImage.setImageResource(image); //Ændre til BRO, så vi har en metode til at ændre baggrunden
     }
-    public void setImageBACKGROUND(int image) {
-        imageView.setImageResource(image); //Metoden til at ændre baggrunden
+
     }
-}
