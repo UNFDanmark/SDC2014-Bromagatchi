@@ -46,7 +46,7 @@ public class jump extends Activity {
             public void onClick(View v) {
                 if (energy > 0) {
                     Animation animationu = new TranslateAnimation(0, 0, 0, -400);
-                    animationu.setDuration(1000);
+                    animationu.setDuration(500);
                     animationu.setFillAfter(true);
                     broImage.startAnimation(animationu);
 
@@ -60,7 +60,7 @@ public class jump extends Activity {
                         @Override
                         public void onAnimationEnd(Animation animation) {
                             Animation animationd = new TranslateAnimation(0, 0, -400, 0);
-                            animationd.setDuration(1000);
+                            animationd.setDuration(500);
                             animationd.setFillAfter(true);
                             broImage.startAnimation(animationd);
                             jumpButton.setEnabled(true);
@@ -111,7 +111,7 @@ public class jump extends Activity {
 
         });
     }
-        public void update() {
+    public void update() {
 
             if (xp < 5) {
                 setImageBro(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden

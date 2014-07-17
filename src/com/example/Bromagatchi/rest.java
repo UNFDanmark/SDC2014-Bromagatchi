@@ -1,15 +1,54 @@
 package com.example.Bromagatchi;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 /**
  * Created by sdc on 7/16/14.
  */
 public class rest extends Activity {
+    public int hp = 100;
+    public int xp = 0;
+    public int energy = 50;
+    public float hap = 1;
+
+    private SharedPreferences prefs;
+    private ImageView broImage;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restlayout);
+
+    }
+   public void update() {
+
+    if (xp < 5) {
+        setImageBro(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+        //Background skifte
+    }
+    if (xp > 4) {
+        setImageBro(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+        //Background skifte
+    }
+    if (xp > 30) {
+        setImageBro(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+        //Background skifte
+    }
+    if (xp > 50) {
+        setImageBro(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+        //Background skifte
+    }
+    if (xp > 100) {
+        setImageBro(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+        //Background skifte
+    }
+}
+
+    public void setImageBro(int image) {
+        broImage.setImageResource(image); //Ændre til BRO, så vi har en metode til at ændre baggrunden
     }
 }
