@@ -2,9 +2,14 @@ package com.example.Bromagatchi;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.ImageView;
+import android.os.Handler;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -16,10 +21,15 @@ public class rest extends Activity {
     public int xp = 0;
     public int energy = 50;
     public float hap = 1;
+    public int delay = 1000;
 
     private SharedPreferences prefs;
     private ImageView broImage;
     private ImageView imageView;
+    private TextView energyGained;
+    private TextView yourEnergyText;
+    private ImageView linearLayout;
+    private Handler h;
 
 
     @Override
@@ -29,6 +39,7 @@ public class rest extends Activity {
         editor.putLong("lastTime", System.currentTimeMillis());
         xp = prefs.getInt("XP", xp);
         energy = prefs.getInt("Energy", energy);
+
         if (energy > 50) {
             energy = 50;
         }
@@ -46,9 +57,32 @@ public class rest extends Activity {
         setContentView(R.layout.restlayout);
         broImage = (ImageView) findViewById(R.id.BroImage);
         imageView = (ImageView) findViewById(R.id.imageView);
+        energyGained = (TextView) findViewById(R.id.ENERGYgained);
+        linearLayout = (ImageView) findViewById(R.id.LinearLayout);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         final ImageView broImage = (ImageView) findViewById(R.id.BroImage);
-
+        h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Random rnd = new Random();
+                energy++;
+                if (energy > 50) {
+                    energy = 50; }
+                energyGained.setText("" + energy);
+                h.postDelayed(this, delay);
+            }
+        }, delay);
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Random rnd = new Random();
+                int color = Color.argb(120, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+                Log.d("", color+"");
+                linearLayout.setBackgroundColor(color);
+                h.postDelayed(this, 100);
+            }
+        }, 100);
     }
 
     @Override
@@ -60,6 +94,7 @@ public class rest extends Activity {
         editor.putLong("lastTime", System.currentTimeMillis());
         // Gem nuværende XP:
         editor.putInt("XP", xp);
+        editor.putInt("Energy", energy);
         editor.commit();
     }
 

@@ -28,7 +28,7 @@ public class jump extends Activity implements SensorEventListener {
     private boolean mInitialized;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
-    private final float NOISE = 7.0f; //Changed 11:19 torsdag
+    private final float NOISE = 6.0f; //Changed 11:19 torsdag
     public int hp = 100;
     public int xp = 0;
     public int energy = 50;
