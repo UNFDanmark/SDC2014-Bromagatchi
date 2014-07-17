@@ -99,16 +99,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Indlæs tiden appen blev paused
-        long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
-        long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
-        System.out.println(diffrence);
-        if (diffrence/1000 > 60) //HVERT MINUT
-        {
-            hp += diffrence/10000;
-            energy += diffrence/10000; //10000 er blot en faktor
-        }
         xp = prefs.getInt("XP", xp);
         energy = prefs.getInt("Energy", energy);
         if (energy > 50) {
@@ -169,28 +159,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(restIntent);
-                if (energy >= 50) {
-                    energy = 50;
-                    Toast.makeText(getApplicationContext(), "You have reached max energy!", Toast.LENGTH_SHORT).show();
-                } else {
-                    energy+= 5 ;
-
-                    if (hap >= 1.9) {
-                        hap = (float) 2.0;
-                        System.out.println(hap);
-                    }
-
-                    if (hap <= 0) {
-                        hap = (float) 0.1;
-                        System.out.println(hap);
-                    }
-
-                    if (hap < 1.9) {
-                        hap += (float) 0.1;
-                        System.out.println(hap);
-                    }
-                    update();
-                }
 
             }
         });
