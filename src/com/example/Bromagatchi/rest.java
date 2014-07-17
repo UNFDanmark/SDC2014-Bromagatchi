@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 /**
  * Created by sdc on 7/16/14.
  */
@@ -17,21 +19,14 @@ public class rest extends Activity {
 
     private SharedPreferences prefs;
     private ImageView broImage;
+    private ImageView imageView;
 
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Indlæs tiden appen blev paused
-        long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
-        long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
-        System.out.println(diffrence);
-        if (diffrence / 10000 > 60) //HVERT MINUT
-        {
-            hp += diffrence / 10;
-            energy += diffrence / 10; //10000 er blot en faktor
-        }
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong("lastTime", System.currentTimeMillis());
         xp = prefs.getInt("XP", xp);
         energy = prefs.getInt("Energy", energy);
         if (energy > 50) {
@@ -41,6 +36,7 @@ public class rest extends Activity {
             hp = 100;
         }
         update();
+        editor.commit();
 
     }
 
@@ -49,6 +45,7 @@ public class rest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restlayout);
         broImage = (ImageView) findViewById(R.id.BroImage);
+        imageView = (ImageView) findViewById(R.id.imageView);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         final ImageView broImage = (ImageView) findViewById(R.id.BroImage);
 
@@ -88,9 +85,13 @@ public class rest extends Activity {
             setImageBro(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
         }
+
     }
 
     public void setImageBro(int image) {
         broImage.setImageResource(image); //Ændre til BRO, så vi har en metode til at ændre baggrunden
+    }
+    public void setImageBACKGROUND(int image) {
+        imageView.setImageResource(image); //Metoden til at ændre baggrunden
     }
 }

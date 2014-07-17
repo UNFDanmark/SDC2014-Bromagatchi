@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 
     public int hp = 100;
     public int xp = 0;
-    public int energy = 50;
+    public int energy = 99999;
     public float hap = 1;
     //public AlarmManager alarmMgr;
     //public PendingIntent alarmIntent;*/
@@ -99,6 +99,15 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        // Indlæs tiden appen blev paused
+        long lastTime = prefs.getLong("lastTime", System.currentTimeMillis()); // Default værdi er System.currentTime...
+        long diffrence = System.currentTimeMillis() - lastTime; // Difference i ms
+        System.out.println(diffrence);
+        if (diffrence / 1000 > 1) //HVERT MINUT
+        {
+            hp += diffrence/1000;
+            energy += diffrence/1000; //10000 er blot en faktor
+        }
         xp = prefs.getInt("XP", xp);
         energy = prefs.getInt("Energy", energy);
         if (energy > 50) {
