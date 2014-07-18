@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.Bromagatchi"
+          package="dk.sdc.Bromagatchi"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="19"/>
     <application android:label="@string/app_name" android:icon="@drawable/bro_icon">
-        <activity android:name="MainActivity"
+        <activity android:name="dk.sdc.Bromagatchi.MainActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Holo.NoActionBar"
                   android:screenOrientation="portrait">
@@ -14,13 +14,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".jump"
+        <activity android:name="dk.sdc.Bromagatchi.jump"
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
-        <activity android:name=".rest"
+        <activity android:name="dk.sdc.Bromagatchi.rest"
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.Holo.NoActionBar">
         </activity>
     </application>
-</manifest>
+</manifest>ee

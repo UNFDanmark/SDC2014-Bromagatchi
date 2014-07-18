@@ -1,4 +1,4 @@
-package com.example.Bromagatchi;
+package dk.sdc.Bromagatchi;
 
 import android.app.Activity;
 /*import android.app.AlarmManager;
@@ -9,13 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.format.Time;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
 import java.util.Date;
-import java.util.Random;
 
 
 public class MainActivity extends Activity {
