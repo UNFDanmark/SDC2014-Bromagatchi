@@ -72,12 +72,14 @@ public class rest extends Activity {
             @Override
             public void run() {
                 Random rnd = new Random();
+                int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
                 energy++;
+                energyGained.setText(energy+"");
                 if (energy > 50) {
                     energy = 50;
                     energyGained.setText("Max Energy");
+                    energyGained.setTextColor(color);
                 }
-                energyGained.setText(energy+"");
                 h.postDelayed(this, delay);
             }
         }, delay);

@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
     public Date date;
 
     private ImageView broImage;
-    private ImageView imageView;
+    private ImageView broBG;
     private Button exercisebutton;
 
     private SharedPreferences prefs;
@@ -47,29 +47,35 @@ public class MainActivity extends Activity {
         ProgressBar ENERGYBar = (ProgressBar) findViewById(R.id.ENERGYBar);
         ENERGYBar.setProgress((int) ((float) energy/50*100));
         ProgressBar XPBar = (ProgressBar) findViewById(R.id.XPBar);
+
         if (xp <= 5) {
             setImageBRO(R.drawable.phase0); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
             XPBar.setProgress((int) ((float) xp/5*100));
+            setImageBACKGROUND(R.drawable.hospital_background);
         }
         if (xp >= 5){
             setImageBRO(R.drawable.phase1); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
             XPBar.setProgress((int) ((float) (xp-5)/25*100));
+            setImageBACKGROUND(R.drawable.couch);
         }
         if (xp > 30) {
             setImageBRO(R.drawable.phase2); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
             XPBar.setProgress((int) ((float) (xp-30)/20*100));
+            setImageBACKGROUND(R.drawable.background1);
         }
         if (xp > 50) {
             setImageBRO(R.drawable.phase3); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
             XPBar.setProgress((int) ((float) (xp-50)/50*100));
+            setImageBACKGROUND(R.drawable.background1);
         }
         if (xp > 100) {
             setImageBRO(R.drawable.phase4); //Ændre til BRO, så vi har en metode til at ændre baggrunden
             //Background skifte
+            setImageBACKGROUND(R.drawable.finalstagedone);
             XPBar.setProgress((int) ((float) 100));
         }
         if (energy >= 50) {
@@ -85,7 +91,7 @@ public class MainActivity extends Activity {
     }
 
     public void setImageBACKGROUND(int image) {
-        imageView.setImageResource(image); //Metoden til at ændre baggrunden
+        broBG.setImageResource(image); //Metoden til at ændre baggrunden
     }
 
 
@@ -138,6 +144,7 @@ public class MainActivity extends Activity {
 
         // Find views
         broImage = (ImageView)findViewById(R.id.BroImage);
+        broBG = (ImageView) findViewById(R.id.imageView);
 
         final Intent jumpIntent = new Intent(MainActivity.this , jump.class);
         final Intent restIntent = new Intent(MainActivity.this , rest.class);

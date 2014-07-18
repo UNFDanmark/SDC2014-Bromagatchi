@@ -16,6 +16,6 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Jump Squat!"
+            android:text="DO SOME JUMPSQUATS OR JUST PRESS ME"
             android:id="@+id/jumpButton"/>
 </LinearLayout>
