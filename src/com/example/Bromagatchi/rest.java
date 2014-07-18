@@ -79,8 +79,9 @@ public class rest extends Activity {
                 energy++;
                 if (energy > 50) {
                     energy = 50;
+                    energyGained.setText("Max Energy");
                 }
-                energyGained.setText("" + energy);
+                energyGained.setText(energy+"");
                 h.postDelayed(this, delay);
             }
         }, delay);
@@ -89,7 +90,7 @@ public class rest extends Activity {
             public void run() {
                 Random rnd = new Random();
                 int color = Color.argb(120, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-                Log.d("", color + "");
+                
                 linearLayout.setBackgroundColor(color);
                 h.postDelayed(this, 100);
             }

@@ -3,6 +3,7 @@ package com.example.Bromagatchi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -60,7 +61,7 @@ public class jump extends Activity implements SensorEventListener {
         jumpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (energy > 0) {
+                if (energy > 9) {
                     Animation animationu = new TranslateAnimation(0, 0, 0, -400);
                     animationu.setDuration(500);
                     animationu.setFillAfter(true);
@@ -215,6 +216,7 @@ public class jump extends Activity implements SensorEventListener {
                                     Toast.makeText(getApplicationContext(), "Injury", Toast.LENGTH_SHORT).show();
                                     System.out.println(hap);
                                     System.out.println(energy);
+                                    hp -=10;
                                 }
                                 energy -= 10;
                                 //xp += 1*hap;
@@ -235,10 +237,14 @@ public class jump extends Activity implements SensorEventListener {
 
                         }
                     });
+
                     if (y < -5) {
                         hasJumped = false;
                         Log.d("Has Jumped", hasJumped + "");
                     }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Not enough energy", Toast.LENGTH_SHORT).show();
                 }
             }
 
